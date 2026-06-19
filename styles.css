@@ -1,0 +1,155 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Rugged outdoor extras */
+  --color-moss: var(--moss);
+  --color-forest: var(--forest);
+  --color-tan: var(--tan);
+  --color-paper: var(--paper);
+  --color-bark: var(--bark);
+  --color-rust: var(--rust);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Trail-map palette */
+  --paper: oklch(0.96 0.02 85);          /* #f5f1e8 warm paper */
+  --forest: oklch(0.27 0.05 145);        /* deep forest */
+  --moss: oklch(0.45 0.08 145);          /* moss green */
+  --tan: oklch(0.78 0.09 75);            /* warm tan */
+  --bark: oklch(0.32 0.04 60);           /* dark bark brown */
+  --rust: oklch(0.58 0.16 40);           /* rust orange */
+
+  --background: var(--paper);
+  --foreground: oklch(0.22 0.03 145);
+  --card: oklch(0.99 0.01 85);
+  --card-foreground: oklch(0.22 0.03 145);
+  --popover: oklch(0.99 0.01 85);
+  --popover-foreground: oklch(0.22 0.03 145);
+  --primary: var(--forest);
+  --primary-foreground: var(--paper);
+  --secondary: oklch(0.88 0.04 85);
+  --secondary-foreground: var(--forest);
+  --muted: oklch(0.91 0.02 85);
+  --muted-foreground: oklch(0.45 0.03 110);
+  --accent: var(--tan);
+  --accent-foreground: var(--forest);
+  --destructive: oklch(0.55 0.2 28);
+  --destructive-foreground: var(--paper);
+  --border: oklch(0.84 0.03 85);
+  --input: oklch(0.84 0.03 85);
+  --ring: var(--moss);
+
+  --chart-1: var(--moss);
+  --chart-2: var(--tan);
+  --chart-3: var(--rust);
+  --chart-4: oklch(0.4 0.05 145);
+  --chart-5: oklch(0.65 0.04 110);
+}
+
+.dark {
+  --background: oklch(0.18 0.02 145);
+  --foreground: var(--paper);
+  --card: oklch(0.22 0.03 145);
+  --card-foreground: var(--paper);
+  --popover: oklch(0.22 0.03 145);
+  --popover-foreground: var(--paper);
+  --primary: var(--moss);
+  --primary-foreground: oklch(0.15 0.02 145);
+  --secondary: oklch(0.28 0.04 145);
+  --secondary-foreground: var(--paper);
+  --muted: oklch(0.25 0.03 145);
+  --muted-foreground: oklch(0.7 0.03 110);
+  --accent: var(--tan);
+  --accent-foreground: oklch(0.18 0.02 145);
+  --border: oklch(0.3 0.03 145);
+  --input: oklch(0.3 0.03 145);
+  --ring: var(--tan);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 20% 10%, oklch(0.92 0.04 85) 0, transparent 40%),
+      radial-gradient(circle at 80% 90%, oklch(0.9 0.05 145 / 0.4) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  .font-mono, code, kbd { font-family: var(--font-mono); }
+}
+
+/* Topographic line texture utility */
+.topo-bg {
+  background-color: oklch(0.27 0.05 145);
+  background-image:
+    repeating-radial-gradient(circle at 30% 40%, transparent 0, transparent 18px, oklch(1 0 0 / 0.04) 18px, oklch(1 0 0 / 0.04) 19px),
+    repeating-radial-gradient(circle at 70% 70%, transparent 0, transparent 22px, oklch(1 0 0 / 0.05) 22px, oklch(1 0 0 / 0.05) 23px);
+}
+
+/* Scanning sweep animation */
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.scan-sweep::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 45%, oklch(0.85 0.18 145 / 0.4) 50%, transparent 55%);
+  animation: scan-sweep 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* AR overlay pulse */
+@keyframes ar-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(0.6 0.2 145 / 0.6); }
+  50% { box-shadow: 0 0 0 6px oklch(0.6 0.2 145 / 0); }
+}
+.ar-match { animation: ar-pulse 2s ease-in-out infinite; }
